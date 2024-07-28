@@ -20,4 +20,8 @@ public class AndroidFactory implements PhoneFactory {
     public Battery buildBattery(){
         return new Battery();
     }
+
+    public Processor buildProcessor(){
+        return new AndroidProcessor();
+    }
 }

@@ -13,11 +13,14 @@ public class PhoneMaker {
         Case phoneCase;
         MotherBoard motherBoard;
         Screen screen;
+        Processor processor;
         if(phoneType=="Android"){
             PhoneFactory androidFactory = new AndroidFactory();
             motherBoard = androidFactory.buildMotherBoard();
             screen = androidFactory.buildScreen();
             phoneCase = androidFactory.buildCase();
+            processor = androidFactory.buildProcessor();
+            motherBoard.attachProcessor(processor);
             phoneCase.attachMotherBoard(motherBoard);
             phoneCase.attachScreen(screen);
         }
@@ -26,6 +29,8 @@ public class PhoneMaker {
             motherBoard = iphoneFactory.buildMotherBoard();
             screen = iphoneFactory.buildScreen();
             phoneCase = iphoneFactory.buildCase();
+            processor = iphoneFactory.buildProcessor();
+            motherBoard.attachProcessor(processor);
             phoneCase.attachMotherBoard(motherBoard);
             phoneCase.attachScreen(screen);
         }

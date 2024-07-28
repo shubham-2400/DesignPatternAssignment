@@ -5,4 +5,5 @@ public interface PhoneFactory {
     public MotherBoard buildMotherBoard();
     public Screen buildScreen();
     public Battery buildBattery();
+    public Processor buildProcessor();
 }
