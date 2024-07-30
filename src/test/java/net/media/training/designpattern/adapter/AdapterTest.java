@@ -1,6 +1,10 @@
 package net.media.training.designpattern.adapter;
 
+import static junit.framework.Assert.assertEquals;
+
 import org.junit.Test;
+
+import net.media.training.designpattern.adapter.thirdparty.ThirdPartyLeaveRecord;
 
 /**
  * Created by IntelliJ IDEA.
@@ -14,8 +18,8 @@ public class AdapterTest {
     /*Uncomment the code and make it compilable*/
     @Test
     public void testGetDisplayWallOfShame() throws Exception {
-//        FrontDoorRegister frontDoorRegister = new FrontDoorRegister(new ThirdPartyLeaveRecord());
-//        assertEquals("Super Commando Dhruv has been the most absent employee, shame!", frontDoorRegister.getDisplayWallOfShame());
+       FrontDoorRegister frontDoorRegister = new FrontDoorRegister(new LeaveRecordAdapter(new ThirdPartyLeaveRecord()));
+       assertEquals("Super Commando Dhruv has been the most absent employee, shame!", frontDoorRegister.getDisplayWallOfShame());
     }
 
     @Test

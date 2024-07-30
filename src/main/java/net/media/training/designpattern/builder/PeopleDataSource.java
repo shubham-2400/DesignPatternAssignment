@@ -1,5 +1,4 @@
 package net.media.training.designpattern.builder;
-
 import java.util.List;
 
 /**
@@ -12,13 +11,19 @@ import java.util.List;
 public class PeopleDataSource {
     public static String getPeopleXml(List<Person> persons) {
         String finalXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
-        finalXML += "<People number=\"" + persons.size() + "\">";
+        XmlNode xmlBuilder = new XmlTag("People");
+        xmlBuilder.addAttribute("number", Integer.toString(persons.size()));
         for (Person person : persons) {
-            finalXML += "<Person id=\"" + person.getId() + "\" name=\"" + person.getName() + "\">" +
-                    "<Address><City>" + person.getCity() + "</City><Country>" + person.getCountry() + "</Country></Address>" +
-                    "</Person>";
+            XmlNode personNode = new XmlTag("Person");
+            personNode.addAttribute("id", Integer.toString(person.getId())).addAttribute("name", person.getName());
+            XmlNode address = new XmlTag("Address");
+            XmlNode city = new XmlLeaf("City", person.getCity());
+            XmlNode country = new XmlLeaf("Country", person.getCountry());
+            ((XmlTag) address).addChild(city);
+            ((XmlTag) address).addChild(country);
+            ((XmlTag) personNode).addChild(address);
+            ((XmlTag) xmlBuilder).addChild(personNode);
         }
-        finalXML += "</People>";
-        return finalXML;
+        return finalXML + xmlBuilder.build();
     }
 }

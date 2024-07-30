@@ -9,22 +9,25 @@ package net.media.training.designpattern.strategy;
  */
 public class Employee extends GenericEmployee {
     private int maxAllowedLeaves;
-
+    private EmployeeStrategy employeeStrategy = new EmployeeStrategy();
     @Override
     public void setSalary(int salary) {
-        super.setSalary(salary);
-        this.salary = salary;
+        this.salary = employeeStrategy.setSalary(salary, 0);
+        // super.setSalary(salary);
+        // this.salary = salary;
     }
 
     @Override
     public void setMonthsSpent(int months) {
-        super.setMonthsSpent(months);
-        this.monthsSpent = months;
+        this.monthsSpent = employeeStrategy.setMonthsSpent(months, 0);
+        // super.setMonthsSpent(months);
+        // this.monthsSpent = months;
     }
 
     public void setMaxAllowedLeaves(int leaves) {
-        atLeast(leaves, 1);
-        this.maxAllowedLeaves = leaves;
+        this.maxAllowedLeaves = employeeStrategy.setMaxAllowedLeaves(leaves,1);
+        // atLeast(leaves, 1);
+        // this.maxAllowedLeaves = leaves;
     }
 }
 

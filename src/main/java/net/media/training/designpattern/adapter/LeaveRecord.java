@@ -12,3 +12,7 @@ public interface LeaveRecord {
 
     int getEmployeeAbsences(String employeeName);
 }
+
+
+
+

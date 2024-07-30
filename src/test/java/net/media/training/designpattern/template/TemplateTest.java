@@ -12,6 +12,7 @@ import static junit.framework.Assert.assertEquals;
  * To change this template use File | Settings | File Templates.
  */
 public class TemplateTest {
+    @SuppressWarnings("deprecation")
     @Test
     public void BasicStuffWorks() {
         Screen screen = new Screen();

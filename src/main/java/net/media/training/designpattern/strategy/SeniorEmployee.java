@@ -9,23 +9,26 @@ package net.media.training.designpattern.strategy;
  */
 public class SeniorEmployee extends GenericEmployee {
     private int setMaxBonus;
-
+    private EmployeeStrategy employeeStrategy = new EmployeeStrategy();
     @Override
     public void setSalary(int salary) {
-        super.setSalary(salary);
-        atLeast(salary, 200);
-        this.salary = salary;
+        this.salary = employeeStrategy.setSalary(salary, 200);
+        // super.setSalary(salary);
+        // atLeast(salary, 200);
+        // this.salary = salary;
     }
 
     @Override
     public void setMonthsSpent(int months) {
-        super.setMonthsSpent(months);
-        atLeast(months, 60);
-        this.monthsSpent = months;
+        this.monthsSpent = employeeStrategy.setMonthsSpent(months, 60);
+        // super.setMonthsSpent(months);
+        // atLeast(months, 60);
+        // this.monthsSpent = months;
     }
 
     public void setMaxBonus(int bonus) {
-        atLeast(bonus, 1);
-        this.setMaxBonus = bonus;
+        this.setMaxBonus = employeeStrategy.setMaxBonus(bonus, 1);
+        // atLeast(bonus, 1);
+        // this.setMaxBonus = bonus;
     }
 }
